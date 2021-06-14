@@ -1,0 +1,27 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <option name="LINE_SEPARATOR" value="&#10;" />
+    <JetCodeStyleSettings>
+      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
+    </JetCodeStyleSettings>
+    <ScalaCodeStyleSettings>
+      <option name="alwaysUsedImports">
+        <array>
+          <option value="dev.entree.enderwand.parser.BasicParser._" />
+        </array>
+      </option>
+      <option name="NOT_CONTINUATION_INDENT_FOR_PARAMS" value="true" />
+      <option name="FORMATTER" value="1" />
+      <option name="MULTILINE_STRING_CLOSING_QUOTES_ON_NEW_LINE" value="true" />
+    </ScalaCodeStyleSettings>
+    <codeStyleSettings language="JAVA">
+      <option name="FIELD_ANNOTATION_WRAP" value="0" />
+    </codeStyleSettings>
+    <codeStyleSettings language="Scala">
+      <option name="ALIGN_MULTILINE_PARAMETERS" value="false" />
+    </codeStyleSettings>
+    <codeStyleSettings language="kotlin">
+      <option name="CODE_STYLE_DEFAULTS" value="KOTLIN_OFFICIAL" />
+    </codeStyleSettings>
+  </code_scheme>
+</component>
