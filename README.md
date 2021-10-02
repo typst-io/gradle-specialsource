@@ -17,12 +17,12 @@ plugins {
 
 dependencies {
     // Requires BuildTools to run with `--remapped` option to use this local dependency.
-    compileOnly('org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT:remapped-mojang')
+    compileOnly("org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT:remapped-mojang")
 }
 
 spigotRemap {
     sourceJarTask.set(tasks.jar) // or `tasks.shadowJar` if you use Shadow plugin.
-    spigotVersion.set('1.17.1')
+    spigotVersion.set("1.17.1")
 }
 ```
 
