@@ -11,7 +11,19 @@ in 1.17+.
 ## Usage
 
 ```kotlin
-TODO()
+plugins {
+    id("io.typecraft.gradlesource.spigot") version "1.0.0"
+}
+
+dependencies {
+    // Requires BuildTools to run with `--remapped` option to use this local dependency.
+    compileOnly('org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT:remapped-mojang')
+}
+
+spigotRemap {
+    sourceJarTask.set(tasks.jar) // or `tasks.shadowJar` if you use Shadow plugin.
+    spigotVersion.set('1.17.1')
+}
 ```
 
 ## Developer notes
