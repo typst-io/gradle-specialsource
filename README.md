@@ -21,8 +21,8 @@ dependencies {
 }
 
 spigotRemap {
-    sourceJarTask.set(tasks.jar) // or `tasks.shadowJar` if you use Shadow plugin.
     spigotVersion.set("1.17.1")
+    sourceJarTask.set(tasks.jar) // or `tasks.shadowJar` if you use Shadow plugin.
 }
 ```
 
@@ -38,7 +38,7 @@ But currently, `RemapTask` just checking a `.jar` file not `.class` files, there
 
 The reason why we can't check classes instead of jar is, this plugin depends on md5's `SpecialSource` which makes hard to doing that. 
 
-This limitation is same with the `SpecialSourceMP` which for Maven, and it doesn't support any incremental! 
+This limitation is same with the [SpecialSourceMP](https://github.com/agaricusb/SpecialSourceMP) which for Maven, and it doesn't support any incremental! 
 
 To improve this, we should refactor SpecialSource or just create a new one including only pure functions.
 
