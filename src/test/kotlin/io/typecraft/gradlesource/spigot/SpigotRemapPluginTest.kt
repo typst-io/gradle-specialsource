@@ -8,6 +8,9 @@ import java.io.File
 import kotlin.test.Test
 
 class SpigotRemapPluginTest {
+    /**
+     * This requires BuildTools to run with `--rev 1.17.1 --remapped` options.
+     */
     @Test
     fun configuration(@TempDir dir: File) {
         val sources = mapOf(
@@ -29,7 +32,6 @@ class SpigotRemapPluginTest {
                 
                 repositories {
                     mavenCentral()
-                    mavenLocal()
                 }
                 
                 dependencies {
@@ -50,7 +52,7 @@ class SpigotRemapPluginTest {
                 import net.minecraft.DefaultUncaughtExceptionHandlerWithName;
                 import org.bukkit.plugin.java.JavaPlugin;
                 
-                class MyPlugin extends JavaPlugin {
+                public class MyPlugin extends JavaPlugin {
                     @Override
                     public void onEnable() {
                         getLogger().info(DefaultUncaughtExceptionHandlerWithName.class.getName());
@@ -69,8 +71,7 @@ class SpigotRemapPluginTest {
             .withArguments("assemble")
             .withGradleVersion("7.1.1")
         val result = runner.build()
-        assertEquals(TaskOutcome.SUCCESS, result.task(":remapMojangToObf"))
-        assertEquals(TaskOutcome.SUCCESS, result.task(":remapObfToSpigot"))
-        // TODO: more?
+        assertEquals(TaskOutcome.SUCCESS, result.task(":remapMojangToObf")?.outcome)
+        assertEquals(TaskOutcome.SUCCESS, result.task(":remapObfToSpigot")?.outcome)
     }
 }

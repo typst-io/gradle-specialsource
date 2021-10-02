@@ -17,7 +17,7 @@ abstract class SpigotRemapExtension {
      * Example:
      *
      * ```kotlin
-     * sourceJarTask.set(tasks.jar)
+     * sourceJarTask.set(tasks.jar) // or `tasks.shadowJar` if you use Shadow plugin.
      * ```
      *
      * As this just a simple and convenient input, you can configure the `RemapTask` in detail.
@@ -31,7 +31,7 @@ abstract class SpigotRemapExtension {
      * Example:
      *
      * ```kotlin
-     * spigotVersion.set("1.16.5") // 1.16.5-R0.1-SNAPSHOT
+     * spigotVersion.set("1.17.1") // 1.17.1-R0.1-SNAPSHOT
      * ```
      *
      * This used for get the mapping files in maven local repository.
@@ -42,6 +42,6 @@ abstract class SpigotRemapExtension {
         val pieces = ver.split("-")
         val r = pieces.getOrNull(1) ?: "R0.1"
         val tag = pieces.getOrNull(2) ?: "SNAPSHOT"
-        "1.16.5-${r}-${tag}"
+        "${pieces[0]}-${r}-${tag}"
     }
 }
