@@ -12,17 +12,17 @@ in 1.17+.
 
 ```kotlin
 plugins {
-    id("io.typecraft.gradlesource.spigot") version "1.0.0"
+    id("io.typst.gradlesource.spigot") version "2.0.0"
 }
 
 dependencies {
     // Requires BuildTools to run with `--remapped` option to use this local dependency.
-    compileOnly("org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT:remapped-mojang")
+    compileOnly("org.spigotmc:spigot:1.21.8-R0.1-SNAPSHOT:remapped-mojang")
 }
 
 // Frontend configuration
 spigotRemap {
-    spigotVersion.set("1.17.1")
+    spigotVersion.set("1.21.8")
     sourceJarTask.set(tasks.jar) // or `tasks.shadowJar` if you use Shadow plugin.
 }
 
