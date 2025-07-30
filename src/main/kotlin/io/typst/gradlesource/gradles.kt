@@ -1,4 +1,4 @@
-package io.typecraft.gradlesource
+package io.typst.gradlesource
 
 import org.gradle.api.tasks.bundling.AbstractArchiveTask
 

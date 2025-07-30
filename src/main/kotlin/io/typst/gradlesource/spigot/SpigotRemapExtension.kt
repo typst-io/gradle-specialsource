@@ -1,4 +1,4 @@
-package io.typecraft.gradlesource.spigot
+package io.typst.gradlesource.spigot
 
 import org.gradle.api.provider.Property
 import org.gradle.api.provider.Provider
@@ -8,7 +8,7 @@ import org.gradle.api.tasks.bundling.AbstractArchiveTask
  * Configuration for remap mojang to spigot for distribution.
  *
  * @since 1.0
- * @see [SpigotRemapPlugin][io.typecraft.gradlesource.spigot.SpigotRemapPlugin]
+ * @see [SpigotRemapPlugin][SpigotRemapPlugin]
  */
 abstract class SpigotRemapExtension {
     /**

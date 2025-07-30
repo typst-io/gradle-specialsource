@@ -1,14 +1,11 @@
-package io.typecraft.gradlesource
+package io.typst.gradlesource
 
 import net.md_5.specialsource.Jar
 import net.md_5.specialsource.JarMapping
 import net.md_5.specialsource.JarRemapper
 import org.gradle.api.DefaultTask
-import org.gradle.api.file.DirectoryProperty
-import org.gradle.api.file.RegularFile
 import org.gradle.api.file.RegularFileProperty
 import org.gradle.api.provider.Property
-import org.gradle.api.provider.Provider
 import org.gradle.api.tasks.*
 
 /**
@@ -37,6 +34,7 @@ abstract class RemapTask : DefaultTask() {
      */
     @get:OutputFile
     abstract val outJarFile: RegularFileProperty
+
     /**
      * Input a mapping file as `RegularFile`. Mandatory.
      *

@@ -1,13 +1,12 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.5.10"
     `java-gradle-plugin`
     `kotlin-dsl`
     id("maven-publish")
-    id("com.gradle.plugin-publish") version "0.14.0"
+    id("com.gradle.plugin-publish") version "1.3.1"
 }
 
-group = "io.typecraft"
-version = "1.0.0"
+group = "io.typst"
+version = "2.0.0"
 
 repositories {
     mavenCentral()
@@ -16,7 +15,7 @@ repositories {
 
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib")
-    implementation("net.md-5:SpecialSource:1.10.0")
+    implementation("net.md-5:SpecialSource:1.11.5")
     compileOnly(fileTree("libs") {
         include("*.jar")
     })
@@ -24,20 +23,17 @@ dependencies {
 }
 
 gradlePlugin {
+    website.set("https://github.com/typst-io/gradle-specialsource")
+    vcsUrl.set("https://github.com/typst-io/gradle-specialsource.git")
     plugins {
         create("spigot") {
-            id = "io.typecraft.gradlesource.spigot"
+            id = "io.typst.gradlesource.spigot"
             displayName = "Gradle SpecialSource"
             description = "SpecialSource for Gradle to remap name definitions."
-            implementationClass = "io.typecraft.gradlesource.spigot.SpigotRemapPlugin"
+            implementationClass = "io.typst.gradlesource.spigot.SpigotRemapPlugin"
+            tags.set(listOf("spigot", "bukkit", "specialsource"))
         }
     }
-}
-
-pluginBundle {
-    website = "https://github.com/typecraft-io/gradle-specialsource"
-    vcsUrl = "https://github.com/typecraft-io/gradle-specialsource.git"
-    tags = listOf("spigot", "bukkit", "specialsource")
 }
 
 tasks {

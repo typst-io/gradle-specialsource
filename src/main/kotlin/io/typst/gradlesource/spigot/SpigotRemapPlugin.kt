@@ -1,10 +1,9 @@
-package io.typecraft.gradlesource.spigot
+package io.typst.gradlesource.spigot
 
-import io.typecraft.gradlesource.RemapTask
-import io.typecraft.gradlesource.archiveNameFromTask
+import io.typst.gradlesource.RemapTask
+import io.typst.gradlesource.archiveNameFromTask
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.Task
 import org.gradle.api.plugins.JavaPlugin
 import org.gradle.kotlin.dsl.apply
 import org.gradle.kotlin.dsl.create

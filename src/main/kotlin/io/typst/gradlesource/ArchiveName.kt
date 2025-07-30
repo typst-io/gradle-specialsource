@@ -1,4 +1,4 @@
-package io.typecraft.gradlesource
+package io.typst.gradlesource
 
 data class ArchiveName(
     val baseName: String,

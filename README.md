@@ -20,10 +20,13 @@ dependencies {
     compileOnly("org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT:remapped-mojang")
 }
 
+// Frontend configuration
 spigotRemap {
     spigotVersion.set("1.17.1")
     sourceJarTask.set(tasks.jar) // or `tasks.shadowJar` if you use Shadow plugin.
 }
+
+
 ```
 
 ## Developer notes

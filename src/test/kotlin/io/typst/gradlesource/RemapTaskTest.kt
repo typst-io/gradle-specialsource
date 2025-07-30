@@ -1,4 +1,4 @@
-package io.typecraft.gradlesource
+package io.typst.gradlesource
 
 import org.gradle.testkit.runner.GradleRunner
 import org.gradle.testkit.runner.TaskOutcome
@@ -32,11 +32,11 @@ class RemapTaskTest {
         val obf2SpigotJarPathGradle = dir.resolve("my-plugin-spigot-gradle.jar").absolutePath.replace("\\", "/")
         val sources = mapOf(
             "build.gradle" to """
-                import io.typecraft.gradlesource.RemapTask
+                import io.typst.gradlesource.RemapTask
                 
                 plugins {
                     id 'java'
-                    id 'io.typecraft.gradlesource.spigot'
+                    id 'io.typst.gradlesource.spigot'
                 }
                 
                 group 'mypkg'
@@ -44,8 +44,7 @@ class RemapTaskTest {
                 
                 java {
                     toolchain {
-                        languageVersion = JavaLanguageVersion.of(16)
-                        vendor = JvmVendorSpec.ADOPTOPENJDK
+                        languageVersion = JavaLanguageVersion.of(21)
                     }
                 }
                 
@@ -106,7 +105,7 @@ class RemapTaskTest {
             .withProjectDir(dir)
             .withPluginClasspath()
             .withArguments("assemble")
-            .withGradleVersion("7.1.1")
+            .withGradleVersion("8.14.3")
 
         // 1. build success
         val result = runner.build()
@@ -117,7 +116,7 @@ class RemapTaskTest {
         val mojang2ObfJarFile = dir.resolve("my-plugin-obf.jar")
         val obf2SpigotJarFile = dir.resolve("my-plugin-spigot.jar")
         val ssJar = dir.resolve("special-source.jar")
-        ssJar.writeBytes(URL("https://repo.maven.apache.org/maven2/net/md-5/SpecialSource/1.10.0/SpecialSource-1.10.0-shaded.jar").readBytes())
+        ssJar.writeBytes(URL("https://repo.maven.apache.org/maven2/net/md-5/SpecialSource/1.11.5/SpecialSource-1.11.5-shaded.jar").readBytes())
         val ssPath = ssJar.absolutePath.replace("\\", "/")
         val cpSep = if (System.getProperty("os.name").toLowerCase().contains("windows")) {
             ";"

@@ -1,4 +1,4 @@
-package io.typecraft.gradlesource.spigot
+package io.typst.gradlesource.spigot
 
 import org.gradle.testkit.runner.GradleRunner
 import org.gradle.testkit.runner.TaskOutcome
@@ -9,15 +9,16 @@ import kotlin.test.Test
 
 class SpigotRemapPluginTest {
     /**
-     * This requires BuildTools to run with `--rev 1.17.1 --remapped` options.
+     * This requires BuildTools to run with `--rev 1.21.8 --remapped` options.
      */
     @Test
     fun configuration(@TempDir dir: File) {
         val sources = mapOf(
             "build.gradle" to """
                 plugins {
-                    id 'kr.entree.spigradle' version '2.2.4'
-                    id 'io.typecraft.gradlesource.spigot'
+                    id 'java'
+                    id 'io.typst.spigradle' version '3.0.2'
+                    id 'io.typst.gradlesource.spigot'
                 }
                 
                 group 'mypkg'
@@ -25,8 +26,7 @@ class SpigotRemapPluginTest {
                 
                 java {
                     toolchain {
-                        languageVersion = JavaLanguageVersion.of(16)
-                        vendor = JvmVendorSpec.ADOPTOPENJDK
+                        languageVersion = JavaLanguageVersion.of(21)
                     }
                 }
                 
@@ -35,12 +35,12 @@ class SpigotRemapPluginTest {
                 }
                 
                 dependencies {
-                    compileOnly('org.spigotmc:spigot:1.17.1-R0.1-SNAPSHOT:remapped-mojang')
+                    compileOnly('org.spigotmc:spigot:1.21.8-R0.1-SNAPSHOT:remapped-mojang')
                 }
                 
                 spigotRemap {
                     sourceJarTask.set(tasks.jar)
-                    spigotVersion.set('1.17.1')
+                    spigotVersion.set('1.21.8')
                 }
             """.trimIndent(),
 
@@ -69,7 +69,7 @@ class SpigotRemapPluginTest {
             .withProjectDir(dir)
             .withPluginClasspath()
             .withArguments("assemble")
-            .withGradleVersion("7.1.1")
+            .withGradleVersion("8.14.3")
         val result = runner.build()
         assertEquals(TaskOutcome.SUCCESS, result.task(":remapMojangToObf")?.outcome)
         assertEquals(TaskOutcome.SUCCESS, result.task(":remapObfToSpigot")?.outcome)
